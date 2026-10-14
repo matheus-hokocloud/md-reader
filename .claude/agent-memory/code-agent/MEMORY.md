@@ -1,0 +1,1 @@
+- [Verification recipes](project_verification_recipes.md) — offscreen isolation (XDG_CONFIG_HOME + QSettings.setPath), pixel-compare vs HEAD, no CLAUDE.md edits on agent request

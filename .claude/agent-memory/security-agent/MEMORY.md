@@ -1,0 +1,1 @@
+- [Threat model & findings](project_threat_model.md) — open untrusted-Markdown risk; 2026-10-14 theme JSON review findings

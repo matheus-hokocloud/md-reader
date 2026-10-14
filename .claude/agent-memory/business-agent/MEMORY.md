@@ -1,0 +1,3 @@
+- [Themes/Sparrow decisions](project_themes_sparrow_decisions.md) — 2026-10-14 JSON themes, Ctrl+T semantics, mascot; why read-only still holds
+- [Outline/frame/About revision](project_outline_frame_decisions.md) — 2026-10-14 outline Ctrl+Shift+O, frameless themed frame, About changes
+- [Author identity](project_author_identity.md) — git name vs two GitHub handles (matheus-hokocloud remote, acca90 tetris); never email

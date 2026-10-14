@@ -1,0 +1,1 @@
+- [Review setup](project_review_setup.md) — offscreen harness, XDG+QSettings isolation, view-grab pixel compare vs HEAD, recurring bug classes

@@ -1,0 +1,2 @@
+- [Project assets](project_assets.md) — where md-reader art lives, sparrow/icon style, how the icon is built
+- [PixelArt pipeline limits](reference_pixelart_pipeline.md) — shared ComfyUI, slow queue, what SDXL+LoRA can't do
