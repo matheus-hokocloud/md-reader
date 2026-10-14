@@ -1,0 +1,95 @@
+# --- Secrets and credentials (never commit) ---
+pat
+*.pat
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+id_rsa*
+id_ed25519*
+.netrc
+.npmrc
+.pypirc
+secrets/
+credentials*.json
+service-account*.json
+
+# --- Claude Code: personal, machine-local ---
+.claude/settings.local.json
+CLAUDE.local.md
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# --- Editors and IDEs ---
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*.code-workspace
+
+# --- Dependencies ---
+node_modules/
+vendor/
+.venv/
+venv/
+__pypackages__/
+
+# --- Build output ---
+dist/
+build/
+out/
+target/
+bin/
+obj/
+*.o
+*.so
+*.dll
+*.exe
+*.class
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- Caches, coverage, test output ---
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.next/
+.nuxt/
+.turbo/
+coverage/
+.coverage
+htmlcov/
+*.lcov
+junit*.xml
+
+# --- Logs and runtime ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.pid
+*.tmp
+tmp/
+
+# --- Local data ---
+*.sqlite
+*.sqlite3
+*.db
+.terraform/
+*.tfstate
+*.tfstate.*
