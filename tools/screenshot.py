@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Render a Markdown file in both themes and save window screenshots.
+"""Render a Markdown file in one or more themes and save window screenshots.
 
-Usage: python3 tools/screenshot.py [FILE.md] [OUT_DIR]
-Defaults: sample.md, current directory. Writes OUT_DIR/light.png and OUT_DIR/dark.png.
+Usage: python3 tools/screenshot.py [--theme ID ...] [--width N] [FILE.md] [OUT_DIR]
+Defaults: themes light and dark, sample.md, current directory. Writes OUT_DIR/<ID>.png.
+`--theme all` renders every available theme. `--width` sets the window width (default 900;
+the outline needs about 1080 or more). Themes are switched live (no page reload),
+the same path Ctrl+T and the theme menu use.
 Runs offscreen with throwaway settings, so the user's saved theme/zoom are untouched.
 """
 import os
@@ -24,8 +27,22 @@ TOGGLE_MS = 800
 
 
 def main():
-    src = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / "sample.md").resolve()
-    out = Path(sys.argv[2] if len(sys.argv) > 2 else ".").resolve()
+    args, themes, width = sys.argv[1:], [], 900
+    usage = "usage: screenshot.py [--theme ID|all ...] [--width N] [FILE.md] [OUT_DIR]"
+    if "--width" in args:
+        i = args.index("--width")
+        if i + 1 >= len(args) or not args[i + 1].isdigit():
+            sys.exit(usage)
+        width = int(args[i + 1])
+        del args[i:i + 2]
+    while "--theme" in args:
+        i = args.index("--theme")
+        if i + 1 >= len(args):
+            sys.exit(usage)
+        themes.append(args[i + 1])
+        del args[i:i + 2]
+    src = Path(args[0] if args else ROOT / "sample.md").resolve()
+    out = Path(args[1] if len(args) > 1 else ".").resolve()
     out.mkdir(parents=True, exist_ok=True)
 
     settings_dir = tempfile.mkdtemp(prefix="mdreader-shot-")
@@ -33,23 +50,31 @@ def main():
 
     app = QApplication(["mdreader-screenshot"])
     win = mdreader.Reader()
-    win.resize(900, 1000)
+    if "all" in themes:
+        themes = sorted(win.themes)
+    themes = themes or ["light", "dark"]
+    missing = [t for t in themes if t not in win.themes]
+    if missing:
+        sys.exit(f"unknown theme(s): {', '.join(missing)}; available: {', '.join(sorted(win.themes))}")
+    win.resize(width, 1000)
     win.open_file(src)
     win.show()
 
-    def grab_then(next_step):
-        path = out / f"{win.theme}.png"
-        win.grab().save(str(path))
-        print(path)
-        next_step()
+    def step(remaining):
+        if not remaining:
+            app.quit()
+            return
+        win.set_theme(remaining[0])
 
-    def second():
-        grab_then(app.quit)
+        def grab():
+            path = out / f"{win.theme_id}.png"
+            win.grab().save(str(path))
+            print(path)
+            step(remaining[1:])
 
-    def first():
-        grab_then(lambda: (win.toggle_theme(), QTimer.singleShot(TOGGLE_MS, second)))
+        QTimer.singleShot(TOGGLE_MS, grab)
 
-    QTimer.singleShot(LOAD_MS, first)
+    QTimer.singleShot(LOAD_MS, lambda: step(themes))
     sys.exit(app.exec())
 
 

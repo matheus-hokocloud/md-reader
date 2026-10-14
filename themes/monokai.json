@@ -1,0 +1,22 @@
+{
+  "name": "Monokai",
+  "kind": "dark",
+  "pygments": "monokai",
+  "colors": {
+    "bg": "#272822",
+    "fg": "#f8f8f2",
+    "muted": "#75715e",
+    "border": "#49483e",
+    "soft": "#3e3d32",
+    "code-bg": "#1e1f1c",
+    "link": "#66d9ef",
+    "accent": "#a6e22e",
+    "stripe": "#2d2e27",
+    "mark": "#49483e",
+    "alert-note": "#66d9ef",
+    "alert-tip": "#a6e22e",
+    "alert-important": "#ae81ff",
+    "alert-warning": "#e6db74",
+    "alert-caution": "#f92672"
+  }
+}

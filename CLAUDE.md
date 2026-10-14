@@ -1,22 +1,29 @@
 # Markdown Reader
 
 A small, read-only Markdown viewer for Virgilio's KDE desktop: open a `.md` file, read it
-rendered, toggle light/dark. Python + PySide6/QtWebEngine, `markdown-it-py` and Pygments —
+rendered, in a JSON theme of choice. Mascot: the Sparrow. Python + PySide6/QtWebEngine, `markdown-it-py` and Pygments —
 all from Arch packages, no pip. It is the default app for `text/markdown` on this machine.
 
 ## Commands
 
 - Run: `python3 mdreader.py [FILE.md]` (or `mdreader FILE.md` once installed)
-- Screenshot both themes: `python3 tools/screenshot.py [FILE.md] [OUT_DIR]` → `light.png`, `dark.png`
+- Screenshot themes: `python3 tools/screenshot.py [--theme ID|all] [--width N] [FILE.md] [OUT_DIR]` → `<ID>.png`
+  (default `light`, `dark` at 900 px; the outline needs `--width 1080`+)
 - Render to HTML only: `python3 -c "import mdreader; print(mdreader.render_markdown(open('sample.md').read()))"`
 - Install / set as default app: `./install.sh` — changes system state, ask first (run 2026-10-13, not re-run since); rollback in `docs/ops.md`
 
 ## Code map
 
 - `mdreader.py` — the whole app: `render_markdown` (markdown-it + Pygments, heading ids,
-  task lists, alerts, front matter), `CSS`/`PAGE` templates, `Page` (link interception),
-  `Reader` (window, theme, find, zoom, live reload, drag & drop)
-- `tools/screenshot.py` — offscreen render of a file in both themes
+  task lists, alerts, front matter), theme loading/validation (`load_themes`, `theme_css`,
+  `chrome_css`), `CSS`/`PAGE`/`OUTLINE_JS` templates, `AboutDialog`, `Page` (link
+  interception), `Reader` (frameless themed title bar, theme menu, outline, find, zoom,
+  live reload of file and themes, drag & drop)
+- `themes/*.json` — built-in themes (`light`, `dark`, `solarized-light`, `solarized-dark`,
+  `monokai`); user themes in `~/.config/mdreader/themes/` override by id
+- `assets/` — `sparrow.png` (About art), `icons/mdreader[-N].png` (app icon), `github.svg`;
+  sources and regeneration in `assets/README.md`
+- `tools/screenshot.py` — offscreen render of a file in one or more themes
 - `install.sh` — user launcher, `.desktop` entry, default-app association
 - `sample.md` — test fixture covering the supported Markdown features
 

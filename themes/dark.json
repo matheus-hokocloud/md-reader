@@ -1,0 +1,22 @@
+{
+  "name": "Default Dark",
+  "kind": "dark",
+  "pygments": "github-dark",
+  "colors": {
+    "bg": "#16171a",
+    "fg": "#d9dce1",
+    "muted": "#8c939e",
+    "border": "#30343b",
+    "soft": "#1e2025",
+    "code-bg": "#1d1f24",
+    "link": "#6aa8ff",
+    "accent": "#6aa8ff",
+    "stripe": "#1b1d21",
+    "mark": "#5c4d12",
+    "alert-note": "#4493f8",
+    "alert-tip": "#2da44e",
+    "alert-important": "#8957e5",
+    "alert-warning": "#c48a00",
+    "alert-caution": "#d1242f"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Solarized Dark",
+  "kind": "dark",
+  "pygments": "solarized-dark",
+  "colors": {
+    "bg": "#002b36",
+    "fg": "#839496",
+    "muted": "#586e75",
+    "border": "#1a4753",
+    "soft": "#073642",
+    "code-bg": "#073642",
+    "link": "#268bd2",
+    "accent": "#268bd2",
+    "stripe": "#04313c",
+    "mark": "rgba(181, 137, 0, 0.35)",
+    "alert-note": "#268bd2",
+    "alert-tip": "#859900",
+    "alert-important": "#6c71c4",
+    "alert-warning": "#b58900",
+    "alert-caution": "#dc322f"
+  }
+}

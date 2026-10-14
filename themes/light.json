@@ -1,0 +1,22 @@
+{
+  "name": "Default Light",
+  "kind": "light",
+  "pygments": "default",
+  "colors": {
+    "bg": "#fbfbfa",
+    "fg": "#1f2328",
+    "muted": "#5d6570",
+    "border": "#d9dde3",
+    "soft": "#f1f3f5",
+    "code-bg": "#f3f4f6",
+    "link": "#0b62d6",
+    "accent": "#0b62d6",
+    "stripe": "#f6f7f9",
+    "mark": "#fff3b0",
+    "alert-note": "#4493f8",
+    "alert-tip": "#2da44e",
+    "alert-important": "#8957e5",
+    "alert-warning": "#c48a00",
+    "alert-caution": "#d1242f"
+  }
+}
